@@ -6,6 +6,7 @@ var api = builder.AddProject<Projects.Weatherforecast_Api>("weatherforecast-api"
     .WithReference(redis);
 
 builder.AddProject<Projects.Weatherforecast_Web>("weatherforecast-web")
-    .WithReference(api);
+    .WithReference(api)
+    .WithReplicas(3);
 
 builder.Build().Run();
