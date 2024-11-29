@@ -1,6 +1,9 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var api = builder.AddProject<Projects.Weatherforecast_Api>("weatherforecast-api");
+var redis = builder.AddRedis("redis").WithRedisInsight();
+
+var api = builder.AddProject<Projects.Weatherforecast_Api>("weatherforecast-api")
+    .WithReference(redis);
 
 builder.AddProject<Projects.Weatherforecast_Web>("weatherforecast-web")
     .WithReference(api);

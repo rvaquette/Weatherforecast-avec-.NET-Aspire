@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace Weatherforecast.Api.Controllers
 {
@@ -18,6 +19,7 @@ namespace Weatherforecast.Api.Controllers
             _logger = logger;
         }
 
+        [OutputCache(Duration = 3600)]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
