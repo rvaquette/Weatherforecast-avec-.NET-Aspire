@@ -1,7 +1,8 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.Weatherforecast_Api>("weatherforecast-api");
+var api = builder.AddProject<Projects.Weatherforecast_Api>("weatherforecast-api");
 
-builder.AddProject<Projects.Weatherforecast_Web>("weatherforecast-web");
+builder.AddProject<Projects.Weatherforecast_Web>("weatherforecast-web")
+    .WithReference(api);
 
 builder.Build().Run();
