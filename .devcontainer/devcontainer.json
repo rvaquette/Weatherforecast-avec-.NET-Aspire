@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
+{
+	"name": "Weatherforecast dotnet9",
+	// "image": "mcr.microsoft.com/devcontainers/dotnet:1-9.0",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:dev-9.0-bookworm", // bookworm is more up to date (with .NET SDK) than noble
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"ms-dotnettools.vscode-dotnet-runtime",
+				"ms-dotnettools.csharp",
+				"ms-dotnettools.csdevkit",
+				"ms-vscode-remote.remote-containers"
+			],
+			"settings": {
+				"terminal.integrated.shell.linux": "/bin/bash",
+				"dotnetAcquisitionExtension.sharedExistingDotnetPath": "/usr/share/dotnet/dotnet"
+			}
+		}
+	},
+	"containerEnv": {
+		"DOTNET_LAUNCH_PROFILE": "http"
+	},
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/dotnet:2": {},
+		"ghcr.io/ElanHasson/devcontainer-features/dotnet-aspire-daily:1": {},
+		"ghcr.io/devcontainers/features/azure-cli:1": {}, // for using the host az cli credentials
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {} // for .NET Aspire resource emulation
+	},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+	"remoteUser": "root", //have to use root because of permission issue during dotnet build: https://github.com/microsoft/vscode-remote-release/issues/9099#issuecomment-2290470364
+	"mounts": [
+		// Bind the azure (credential) folder, requires an unencrypted token cache (assuming host is Windows).
+		// On your host, run `az config set core.encrypt_token_cache=false` first, login again, then start the container
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.azure,target=/root/.azure,type=bind",
+		// Bind ASP.NET user secrets folder (please see https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-9.0&tabs=windows#how-the-secret-manager-tool-works)
+		"source=${localEnv:APPDATA}/Microsoft/UserSecrets,target=/root/.microsoft/usersecrets,type=bind"
+	]
+}
