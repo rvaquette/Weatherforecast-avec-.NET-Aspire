@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35514.174 d17.12
+VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weatherforecast.Api", "Weatherforecast.Api\Weatherforecast.Api.csproj", "{5DE401D6-C825-48C1-B9FE-75FBEF604139}"
 EndProject
@@ -10,6 +10,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weatherforecast.AppHost", "Weatherforecast.AppHost\Weatherforecast.AppHost.csproj", "{3FB9B98D-47D9-44D9-981B-A6E0BBF05E85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weatherforecast.ServiceDefaults", "Weatherforecast.ServiceDefaults\Weatherforecast.ServiceDefaults.csproj", "{68107B18-DEA5-4010-8000-3A6991494E95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevContainer", "DevContainer", "{FBEFDE75-25BA-4102-A59F-87A46748102D}"
+	ProjectSection(SolutionItems) = preProject
+		.devcontainer\devcontainer.json = .devcontainer\devcontainer.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
