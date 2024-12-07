@@ -39,7 +39,11 @@ jobs:
             --tenant-id "$Env:AZURE_TENANT_ID"
         shell: pwsh
 
-
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4.1.0
+        with:
+          dotnet-version: 9.0.0
+   
       - name: Provision Infrastructure
         run: azd provision --no-prompt
         working-directory: ./Weatherforecast.AppHost
