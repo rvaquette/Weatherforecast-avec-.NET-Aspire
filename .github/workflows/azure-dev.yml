@@ -42,7 +42,7 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4.1.0
         with:
-          dotnet-version: 9.0.0
+          dotnet-version: 9.0.101
    
       - name: Provision Infrastructure
         run: azd provision --no-prompt
